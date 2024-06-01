@@ -1,0 +1,25 @@
+<form class="form-group" [formGroup]="FormAddShow">
+    <label>Name</label>
+    <input class="form-control" type="text" formControlName="name">
+
+
+    <div *ngIf="this.FormAddShow.controls['name'].invalid && this.FormAddShow.controls['name'].touched "
+        class="alert alert-danger ">
+        <p *ngIf="this.FormAddShow.controls['name'].hasError('required')">titre est obligatoire</p>
+        <p *ngIf="this.FormAddShow.controls['name'].hasError('minlength')">titre doit etre superieure à 3 </p>
+    </div>
+
+    <label>Seats</label>
+    <input class=" form-control " type="text" formControlName="seats">
+
+    <div *ngIf="this.FormAddShow.controls['seats'].invalid && this.FormAddShow.controls['seats'].touched "
+        class="alert alert-danger ">
+        <p *ngIf="this.FormAddShow.controls['seats'].hasError('required')">nombre de place est obligatoire</p>
+        <p *ngIf="this.FormAddShow.controls['seats'].hasError('max')">nombre de place doit etre inferieur ou égale a 10
+        </p>
+    </div>
+    <br>
+    <input class="btn btn-info " type="submit " value="save" (click)="reserve()" [disabled]="FormAddShow.invalid ">
+
+
+</form>
